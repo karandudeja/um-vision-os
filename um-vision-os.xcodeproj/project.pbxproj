@@ -13,6 +13,12 @@
 		153FF0082BF6A3D900252B08 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF0072BF6A3D900252B08 /* ImmersiveView.swift */; };
 		153FF00A2BF6A3DA00252B08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153FF0092BF6A3DA00252B08 /* Assets.xcassets */; };
 		153FF00D2BF6A3DA00252B08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153FF00C2BF6A3DA00252B08 /* Preview Assets.xcassets */; };
+		153FF0152BF6A5A900252B08 /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF0142BF6A5A900252B08 /* StarterView.swift */; };
+		153FF0172BF6A67100252B08 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF0162BF6A67100252B08 /* Restaurant.swift */; };
+		153FF0192BF6A6DD00252B08 /* RestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF0182BF6A6DD00252B08 /* RestaurantsViewModel.swift */; };
+		153FF01B2BF6A72A00252B08 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF01A2BF6A72A00252B08 /* RestaurantView.swift */; };
+		153FF01D2BF6A7E900252B08 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF01C2BF6A7E900252B08 /* NetworkService.swift */; };
+		155D6CD02BF6B7BB0061020E /* Pizza.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 155D6CCF2BF6B7BB0061020E /* Pizza.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		153FF0092BF6A3DA00252B08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		153FF00C2BF6A3DA00252B08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		153FF00E2BF6A3DA00252B08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		153FF0142BF6A5A900252B08 /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
+		153FF0162BF6A67100252B08 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		153FF0182BF6A6DD00252B08 /* RestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewModel.swift; sourceTree = "<group>"; };
+		153FF01A2BF6A72A00252B08 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
+		153FF01C2BF6A7E900252B08 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		155D6CCF2BF6B7BB0061020E /* Pizza.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Pizza.usdz; path = ../../../../../Downloads/Pizza.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +71,15 @@
 			isa = PBXGroup;
 			children = (
 				153FF0032BF6A3D900252B08 /* um_vision_osApp.swift */,
+				153FF01C2BF6A7E900252B08 /* NetworkService.swift */,
+				153FF0162BF6A67100252B08 /* Restaurant.swift */,
+				153FF0182BF6A6DD00252B08 /* RestaurantsViewModel.swift */,
 				153FF0052BF6A3D900252B08 /* ContentView.swift */,
 				153FF0072BF6A3D900252B08 /* ImmersiveView.swift */,
+				153FF0142BF6A5A900252B08 /* StarterView.swift */,
+				153FF01A2BF6A72A00252B08 /* RestaurantView.swift */,
 				153FF0092BF6A3DA00252B08 /* Assets.xcassets */,
+				155D6CCF2BF6B7BB0061020E /* Pizza.usdz */,
 				153FF00E2BF6A3DA00252B08 /* Info.plist */,
 				153FF00B2BF6A3DA00252B08 /* Preview Content */,
 			);
@@ -145,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155D6CD02BF6B7BB0061020E /* Pizza.usdz in Resources */,
 				153FF00D2BF6A3DA00252B08 /* Preview Assets.xcassets in Resources */,
 				153FF00A2BF6A3DA00252B08 /* Assets.xcassets in Resources */,
 			);
@@ -157,9 +176,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153FF0172BF6A67100252B08 /* Restaurant.swift in Sources */,
+				153FF0192BF6A6DD00252B08 /* RestaurantsViewModel.swift in Sources */,
+				153FF01D2BF6A7E900252B08 /* NetworkService.swift in Sources */,
 				153FF0062BF6A3D900252B08 /* ContentView.swift in Sources */,
 				153FF0042BF6A3D900252B08 /* um_vision_osApp.swift in Sources */,
+				153FF0152BF6A5A900252B08 /* StarterView.swift in Sources */,
 				153FF0082BF6A3D900252B08 /* ImmersiveView.swift in Sources */,
+				153FF01B2BF6A72A00252B08 /* RestaurantView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

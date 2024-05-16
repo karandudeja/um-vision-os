@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  um-vision-os
-//
-//  Created by DSV on 2024-05-16.
-//
-
 import SwiftUI
 import RealityKit
 import RealityKitContent
