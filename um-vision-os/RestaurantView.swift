@@ -1,4 +1,7 @@
 import SwiftUI
+import RealityKit
+import RealityKitContent
+import SceneKit
 
 struct RestaurantView: View {
     let restaurant: Restaurant
@@ -6,6 +9,8 @@ struct RestaurantView: View {
     
     @State private var showImmersiveSpace = false
     @State private var immersiveSpaceIsShown = false
+    
+    @State private var showPizza = false
     
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
@@ -27,7 +32,7 @@ struct RestaurantView: View {
                 HStack{
                     Text(restaurant.name)
                         .bold()
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .font(.title)
                     Spacer()
                 }
                 
@@ -51,30 +56,57 @@ struct RestaurantView: View {
                 }
                 .padding(.vertical, 8.0)
                 
-                Button(action: {
-            
-                    showImmersiveSpace.toggle()
-                        
-                    Task {
-                        if showImmersiveSpace {
-                            switch await openImmersiveSpace(id: "ImmersiveSpace") {
-                            case .opened:
-                                immersiveSpaceIsShown = true
-                            case .error, .userCancelled:
-                                fallthrough
-                            @unknown default:
+                HStack{
+                    Button(action: {
+                
+                        showImmersiveSpace.toggle()
+                            
+                        Task {
+                            if showImmersiveSpace {
+                                switch await openImmersiveSpace(id: "ImmersiveSpace") {
+                                case .opened:
+                                    immersiveSpaceIsShown = true
+                                case .error, .userCancelled:
+                                    fallthrough
+                                @unknown default:
+                                    immersiveSpaceIsShown = false
+                                    showImmersiveSpace = false
+                                }
+                            } else if immersiveSpaceIsShown {
+                                await dismissImmersiveSpace()
                                 immersiveSpaceIsShown = false
-                                showImmersiveSpace = false
                             }
-                        } else if immersiveSpaceIsShown {
-                            await dismissImmersiveSpace()
-                            immersiveSpaceIsShown = false
                         }
+                    }, label: {
+                        Text("Immersive Restaurant View")
+                    })
+                    .padding()
+                    
+                    
+                    Button(action: {
+                        showPizza.toggle()
+                    }, label: {
+                        Text("Show Pizza")
+                    })
+                    .padding()
+                }
+                
+                if showPizza {
+                    /*Model3D(named: "3DModels/Pizza") { model in
+                        model
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
                     }
-                }, label: {
-                    Text("Immersive Restaurant View")
-                })
-                .padding(.vertical, 8.0)
+                    .frame(width:300, height: 300)*/
+                    
+                    SceneView(
+                        scene: loadPizzaScene(),
+                        options: [.autoenablesDefaultLighting, .allowsCameraControl]
+                    )
+                    .frame(height: 100)
+                }
                 
             }
             .padding(.horizontal, 20.0)
@@ -84,6 +116,14 @@ struct RestaurantView: View {
         .ignoresSafeArea()
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func loadPizzaScene() -> SCNScene {
+        guard let scene = SCNScene(named: "3DModels/Pizza.scn") else {
+            print("Failed to load Pizza.scn")
+            return SCNScene() // Return an empty scene if loading fails
+        }
+        return scene
     }
 }
 

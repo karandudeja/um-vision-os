@@ -1,0 +1,83 @@
+{
+  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
+  "openSceneRelativePaths" : [
+    "Immersive.usda",
+    "RCscenePizza.usda"
+  ],
+  "recentIdentifiers" : {
+
+  },
+  "sceneCameraHistory" : {
+    "95D50205-B460-48E3-AEDE-BB7E27026721" : [
+      {
+        "date" : 737620174.590412,
+        "title" : "Untitled",
+        "transform" : [
+          0.99999994,
+          0,
+          0,
+          0,
+          0,
+          0.8660254,
+          -0.49999994,
+          0,
+          0,
+          0.49999994,
+          0.8660254,
+          0,
+          -0.07400374,
+          0.2031694,
+          0.36764538,
+          1
+        ]
+      },
+      {
+        "date" : 737620150.872691,
+        "title" : "Untitled",
+        "transform" : [
+          0.99999994,
+          0,
+          -0,
+          0,
+          -0,
+          0.8660254,
+          -0.49999994,
+          0,
+          0,
+          0.49999994,
+          0.8660254,
+          0,
+          0,
+          0.20998746,
+          0.36370897,
+          1
+        ]
+      }
+    ],
+    "AF09ED6F-1707-48FD-8720-65B998362C09" : [
+      {
+        "date" : 737620097.63482,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          -0,
+          0,
+          -0,
+          0.8660253,
+          -0.5000001,
+          0,
+          0,
+          0.5000001,
+          0.8660253,
+          0,
+          0,
+          3.3760252,
+          3.730108,
+          1
+        ]
+      }
+    ]
+  },
+  "selectedSceneRelativePath" : "RCscenePizza.usda"
+}
