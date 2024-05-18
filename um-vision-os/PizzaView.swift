@@ -8,7 +8,7 @@ struct PizzaView: View {
             model
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width:500, height:500)
+                .frame(width:500, height:300)
         } placeholder: {
             ProgressView()
         }

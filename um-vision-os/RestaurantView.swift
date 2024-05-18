@@ -1,7 +1,7 @@
 import SwiftUI
 import RealityKit
 import RealityKitContent
-import SceneKit
+
 
 struct RestaurantView: View {
     let restaurant: Restaurant
@@ -10,10 +10,14 @@ struct RestaurantView: View {
     @State private var showImmersiveSpace = false
     @State private var immersiveSpaceIsShown = false
     
+    @State private var showBurger = false
     @State private var showPizza = false
     
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    @Environment(\.openWindow) private var openWindowObject
+    
+    let foodNamesArr:[String] = ["Pizza","Burger"]
     
     var body: some View {
         
@@ -80,32 +84,50 @@ struct RestaurantView: View {
                     }, label: {
                         Text("Immersive Restaurant View")
                     })
-                    .padding()
+                    .padding(.vertical, 16.0)
                     
                     
-                    Button(action: {
-                        showPizza.toggle()
-                    }, label: {
-                        Text("Show Pizza")
-                    })
-                    .padding()
+                    if(restaurant.name == "Wayne \"Chad Broski\" Burgers"){
+                        Button(action: {
+                            showBurger.toggle()
+                        }, label: {
+                            Text("Show Burger")
+                        })
+                        .padding(16.0)
+                    }
+                    
+                    if(restaurant.name == "Pizzeria Varsha"){
+                        Button(action: {
+                            showPizza.toggle()
+                        }, label: {
+                            Text("Show Pizza")
+                        })
+                        .padding(16.0)
+                    }
                 }
                 
-                if showPizza {
-                    /*Model3D(named: "3DModels/Pizza") { model in
+                if showBurger {
+                    Model3D(named: "Burger") { model in
                         model
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .frame(width:800)
                     } placeholder: {
                         ProgressView()
                     }
-                    .frame(width:300, height: 300)*/
                     
-                    SceneView(
-                        scene: loadPizzaScene(),
-                        options: [.autoenablesDefaultLighting, .allowsCameraControl]
-                    )
-                    .frame(height: 100)
+                    //openWindowObject(id: "pizza-view")
+                }
+                
+                if showPizza {
+                    Model3D(named: "Pizza") { model in
+                        model
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:500)
+                    } placeholder: {
+                        ProgressView()
+                    }
                 }
                 
             }
@@ -118,13 +140,7 @@ struct RestaurantView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func loadPizzaScene() -> SCNScene {
-        guard let scene = SCNScene(named: "3DModels/Pizza.scn") else {
-            print("Failed to load Pizza.scn")
-            return SCNScene() // Return an empty scene if loading fails
-        }
-        return scene
-    }
+    
 }
 
 /*

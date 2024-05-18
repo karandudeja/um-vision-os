@@ -18,6 +18,8 @@
 		153FF0192BF6A6DD00252B08 /* RestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF0182BF6A6DD00252B08 /* RestaurantsViewModel.swift */; };
 		153FF01B2BF6A72A00252B08 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF01A2BF6A72A00252B08 /* RestaurantView.swift */; };
 		153FF01D2BF6A7E900252B08 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FF01C2BF6A7E900252B08 /* NetworkService.swift */; };
+		15C410D62BF8EDE7000D35AA /* Pizza.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 15C410D52BF8EDE7000D35AA /* Pizza.usdz */; };
+		15C410DB2BF8EFAA000D35AA /* Burger.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 15C410DA2BF8EFAA000D35AA /* Burger.usdz */; };
 		15FF2F702BF72E180090C1A1 /* PizzaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF2F6F2BF72E180090C1A1 /* PizzaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,10 @@
 		153FF0182BF6A6DD00252B08 /* RestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewModel.swift; sourceTree = "<group>"; };
 		153FF01A2BF6A72A00252B08 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		153FF01C2BF6A7E900252B08 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		15C410D52BF8EDE7000D35AA /* Pizza.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Pizza.usdz; path = ../../../../../Downloads/Pizza.usdz; sourceTree = "<group>"; };
+		15C410DA2BF8EFAA000D35AA /* Burger.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Burger.usdz; path = ../../../../../Downloads/Burger.usdz; sourceTree = "<group>"; };
+		15C410DD2BF8F5F1000D35AA /* Burger.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Burger.usdz; sourceTree = "<group>"; };
+		15C410DE2BF8F5F1000D35AA /* Pizza.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pizza.usdz; sourceTree = "<group>"; };
 		15FF2F6F2BF72E180090C1A1 /* PizzaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +85,9 @@
 				153FF0142BF6A5A900252B08 /* StarterView.swift */,
 				153FF01A2BF6A72A00252B08 /* RestaurantView.swift */,
 				15FF2F6F2BF72E180090C1A1 /* PizzaView.swift */,
+				15C410DC2BF8F5C3000D35AA /* 3D-Models */,
+				15C410DA2BF8EFAA000D35AA /* Burger.usdz */,
+				15C410D52BF8EDE7000D35AA /* Pizza.usdz */,
 				153FF0092BF6A3DA00252B08 /* Assets.xcassets */,
 				153FF00E2BF6A3DA00252B08 /* Info.plist */,
 				153FF00B2BF6A3DA00252B08 /* Preview Content */,
@@ -100,6 +109,15 @@
 				153FF00C2BF6A3DA00252B08 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		15C410DC2BF8F5C3000D35AA /* 3D-Models */ = {
+			isa = PBXGroup;
+			children = (
+				15C410DD2BF8F5F1000D35AA /* Burger.usdz */,
+				15C410DE2BF8F5F1000D35AA /* Pizza.usdz */,
+			);
+			path = "3D-Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +181,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C410D62BF8EDE7000D35AA /* Pizza.usdz in Resources */,
 				153FF00D2BF6A3DA00252B08 /* Preview Assets.xcassets in Resources */,
+				15C410DB2BF8EFAA000D35AA /* Burger.usdz in Resources */,
 				153FF00A2BF6A3DA00252B08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
