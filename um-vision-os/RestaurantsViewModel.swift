@@ -1,15 +1,15 @@
 import Foundation
 
-@Observable
+@MainActor
 class RestaurantsViewModel: ObservableObject {
-    var restaurants: [Restaurant] = []
-    var displayedRestaurants: [Restaurant] = []
-    var isLoading = false
-    var error: Error?
-    var isOpenDict: [String: Bool] = [:]
-    var topRatedToggle = false
-    var takeOutToggle = false
-    var fastDeliveryToggle = false
+    @Published var restaurants: [Restaurant] = []
+    @Published var displayedRestaurants: [Restaurant] = []
+    @Published var isLoading = false
+    @Published var error: Error?
+    @Published var isOpenDict: [String: Bool] = [:]
+    @Published var topRatedToggle = false
+    @Published var takeOutToggle = false
+    @Published var fastDeliveryToggle = false
     
     private let topRatedFilterID = "5c64dea3-a4ac-4151-a2e3-42e7919a925d"
     private let takeOutFilterID = "c67cd8a3-f191-4083-ad28-741659f214d7"
@@ -20,7 +20,7 @@ class RestaurantsViewModel: ObservableObject {
         Task {
             do {
                 restaurants = try await NetworkService.shared.fetchRestaurants()
-                //funcFiltersAndSort()
+                funcFiltersAndSort()
                 error = nil
             } catch let fetchError {
                 print("Failed to fetch restaurants:", fetchError)

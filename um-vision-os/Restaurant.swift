@@ -4,7 +4,6 @@ struct Wrapper: Codable {
     let restaurants: [Restaurant]
 }
 
-
 struct Restaurant: Codable, Identifiable, Hashable {
     let id: String
     let imageUrl: String
@@ -13,7 +12,7 @@ struct Restaurant: Codable, Identifiable, Hashable {
     let rating: Double
     let filterIds: [String]
     
-    //var filters: [RestaurantFilter] = []
+    var filters: [RestaurantFilter] = []
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -34,6 +33,7 @@ struct Restaurant: Codable, Identifiable, Hashable {
         filterIds = try container.decode([String].self, forKey: .filterIds)
     }
     
+    
     init(id: String, imageUrl: String, deliveryTime: Int, name: String, rating: Double, filterIds: [String]) {
         self.id = id
         self.imageUrl = imageUrl
@@ -43,7 +43,7 @@ struct Restaurant: Codable, Identifiable, Hashable {
         self.filterIds = filterIds
     }
     
-    // Manually implement Equatable
+    // Making Equatable
     static func == (lhs: Restaurant, rhs: Restaurant) -> Bool {
         return lhs.id == rhs.id &&
             lhs.imageUrl == rhs.imageUrl &&
@@ -54,7 +54,7 @@ struct Restaurant: Codable, Identifiable, Hashable {
             //lhs.filters == rhs.filters
     }
     
-    // Manually implement Hashable
+    // Making Hashable
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(imageUrl)
@@ -98,6 +98,5 @@ struct RestaurantFilter: Codable, Identifiable {
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         imageUrl = try container.decode(String.self, forKey: .imageUrl)
-        
     }
 }

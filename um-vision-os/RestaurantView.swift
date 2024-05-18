@@ -15,9 +15,6 @@ struct RestaurantView: View {
     
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
-    @Environment(\.openWindow) private var openWindowObject
-    
-    let foodNamesArr:[String] = ["Pizza","Burger"]
     
     var body: some View {
         
@@ -35,28 +32,34 @@ struct RestaurantView: View {
             VStack(alignment: .leading) {
                 HStack{
                     Text(restaurant.name)
-                        .bold()
-                        .font(.title)
+                        .fontWeight(.semibold)
+                        .font(.extraLargeTitle2)
                     Spacer()
                 }
                 
                 HStack{
-                    Text("Top-Rated & Fast Delivery & Take Away")
-                        .fontWeight(.medium)
-                        .font(.title3)
+                    if !restaurant.filters.isEmpty {
+                        ForEach(Array(restaurant.filters.enumerated()), id: \.element.id) { index, filter in
+                            Text(filter.name + (index == restaurant.filters.count - 1 ? "" : " •"))
+                                .fontWeight(.medium)
+                                .foregroundStyle(.secondary)
+                                .font(.system(size: 18))
+                        }
+                    }
                     Spacer()
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
                     Text("\(String(format: "%.1f", restaurant.rating))")
                         .fontWeight(.bold)
-                        .foregroundColor(Color(.white))
+                        .foregroundStyle(Color(.white))
                 }
                 .padding(.vertical, 8.0)
                 
                 HStack{
                     Text("\(restaurant.name) \(genericRestaurantCopyText)")
                         .fontWeight(.medium)
-                        .font(.system(size: 16))
+                        .font(.system(size: 24))
+                        .lineSpacing(6.0)
                 }
                 .padding(.vertical, 8.0)
                 
@@ -82,7 +85,10 @@ struct RestaurantView: View {
                             }
                         }
                     }, label: {
-                        Text("Immersive Restaurant View")
+                        Text("Restaurant View")
+                            .font(.system(size: 20))
+                            .fontWeight(.medium)
+                            .padding(10.0)
                     })
                     .padding(.vertical, 16.0)
                     
@@ -92,6 +98,9 @@ struct RestaurantView: View {
                             showBurger.toggle()
                         }, label: {
                             Text("Show Burger")
+                                .font(.system(size: 20))
+                                .fontWeight(.medium)
+                                .padding(10.0)
                         })
                         .padding(16.0)
                     }
@@ -101,6 +110,9 @@ struct RestaurantView: View {
                             showPizza.toggle()
                         }, label: {
                             Text("Show Pizza")
+                                .font(.system(size: 20))
+                                .fontWeight(.medium)
+                                .padding(10.0)
                         })
                         .padding(16.0)
                     }
@@ -115,8 +127,6 @@ struct RestaurantView: View {
                     } placeholder: {
                         ProgressView()
                     }
-                    
-                    //openWindowObject(id: "pizza-view")
                 }
                 
                 if showPizza {
@@ -124,10 +134,16 @@ struct RestaurantView: View {
                         model
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width:500)
+                            .frame(width:500, height: 300)
                     } placeholder: {
                         ProgressView()
                     }
+                    .rotation3DEffect(
+                        .degrees(-12.0),
+                        axis: (x: 1.0, y: 0.0, z: 0.0)
+                    )
+                    
+                    //openWindowObject(id: "pizza-view")
                 }
                 
             }

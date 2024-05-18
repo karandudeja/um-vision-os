@@ -10,15 +10,13 @@ struct StarterView: View {
     
     var body: some View {
         NavigationSplitView {
-            
-            List(viewModel.restaurants, selection: $selectedItem) { restaurant in
+            List(viewModel.displayedRestaurants, selection: $selectedItem) { restaurant in
                 Text(restaurant.name)
                     .font(.title)
                     .tag(restaurant)
                     .padding(.vertical, 10)
             }
             .navigationTitle("Restaurants")
-                
             
         } detail: {
             if let selected = selectedItem {
@@ -38,21 +36,35 @@ struct StarterView: View {
         .toolbar{
             ToolbarItem(placement: .bottomOrnament, content: {
                 HStack{
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.red)
-                    })
+                    Toggle(isOn: $viewModel.topRatedToggle) {
+                        FilterView(iconName: "icon-badge", iconLabel: "Top Rated", isOn: $viewModel.topRatedToggle)
+                    }
+                    .toggleStyle(.button)
+                    .onChange(of: viewModel.topRatedToggle) {
+                        viewModel.toggleTopRated()
+                    }
+                    
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
-                    })
+                    
+                    Toggle(isOn: $viewModel.takeOutToggle) {
+                        FilterView(iconName: "icon-coffee", iconLabel: "Take Away", isOn: $viewModel.takeOutToggle)
+                    }
+                    .toggleStyle(.button)
+                    .onChange(of: viewModel.takeOutToggle) {
+                        viewModel.toggleTakeOut()
+                    }
+                    
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.blue)
-                    })
+                    
+                    Toggle(isOn: $viewModel.fastDeliveryToggle) {
+                        FilterView(iconName: "icon-clock", iconLabel: "Fast Delivery", isOn: $viewModel.fastDeliveryToggle)
+                    }
+                    .toggleStyle(.button)
+                    .onChange(of: viewModel.fastDeliveryToggle) {
+                        viewModel.toggleFastDelivery()
+                    }
                 }
+                .padding(8)
             })
         }
         
