@@ -5,7 +5,7 @@ import RealityKitContent
 
 struct RestaurantView: View {
     let restaurant: Restaurant
-    let genericRestaurantCopyText : String = "is serving tasty delights for you, your friends and family. There is plenty on our delicious menu to try and treat yourself with. We look forward to serving you today!"
+    let genericRestaurantCopyText : String = "is looking forward to serving you today, from our range of tasty dishes!"
     
     @State private var showImmersiveSpace = false
     @State private var immersiveSpaceIsShown = false
@@ -15,6 +15,12 @@ struct RestaurantView: View {
     
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
+    
+    @State var pizzaBtnText:String = "See the Pizza"
+    @State var burgerBtnText:String = "See the Burger"
     
     var body: some View {
         
@@ -34,7 +40,6 @@ struct RestaurantView: View {
                     Text(restaurant.name)
                         .fontWeight(.semibold)
                         .font(.extraLargeTitle2)
-                    Spacer()
                 }
                 
                 HStack{
@@ -47,13 +52,29 @@ struct RestaurantView: View {
                         }
                     }
                     Spacer()
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                    Text("\(String(format: "%.1f", restaurant.rating))")
-                        .fontWeight(.bold)
-                        .foregroundStyle(Color(.white))
+                    HStack{
+                        HStack{
+                            Image(systemName: "stopwatch")
+                                
+                            Text("\(restaurant.deliveryTime) mins")
+                                .fontWeight(.medium)
+                        }
+                        .foregroundStyle(.secondary)
+                        .font(.system(size: 18))
+                        .padding(.trailing, 28)
+                        
+                        HStack{
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                            
+                            Text("\(String(format: "%.1f", restaurant.rating))")
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color(.white))
+                        }
+                    }
                 }
                 .padding(.vertical, 8.0)
+                
                 
                 HStack{
                     Text("\(restaurant.name) \(genericRestaurantCopyText)")
@@ -96,8 +117,17 @@ struct RestaurantView: View {
                     if(restaurant.name == "Wayne \"Chad Broski\" Burgers"){
                         Button(action: {
                             showBurger.toggle()
+                            
+                            if(showBurger){
+                                openWindow(id: "burger-view")
+                            }
+                            else{
+                                dismissWindow(id: "burger-view")
+                            }
+                            
+                            burgerBtnText = showBurger ? "Hide the Burger" : "See the Burger"
                         }, label: {
-                            Text("Show Burger")
+                            Text(burgerBtnText)
                                 .font(.system(size: 20))
                                 .fontWeight(.medium)
                                 .padding(10.0)
@@ -108,8 +138,9 @@ struct RestaurantView: View {
                     if(restaurant.name == "Pizzeria Varsha"){
                         Button(action: {
                             showPizza.toggle()
+                            pizzaBtnText = showPizza ? "Hide the Pizza" : "See the Pizza"
                         }, label: {
-                            Text("Show Pizza")
+                            Text(pizzaBtnText)
                                 .font(.system(size: 20))
                                 .fontWeight(.medium)
                                 .padding(10.0)
@@ -117,18 +148,7 @@ struct RestaurantView: View {
                         .padding(16.0)
                     }
                 }
-                
-                if showBurger {
-                    Model3D(named: "Burger") { model in
-                        model
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:800)
-                    } placeholder: {
-                        ProgressView()
-                    }
-                }
-                
+            
                 if showPizza {
                     Model3D(named: "Pizza") { model in
                         model
@@ -142,8 +162,6 @@ struct RestaurantView: View {
                         .degrees(-12.0),
                         axis: (x: 1.0, y: 0.0, z: 0.0)
                     )
-                    
-                    //openWindowObject(id: "pizza-view")
                 }
                 
             }

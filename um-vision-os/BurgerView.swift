@@ -2,13 +2,13 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct PizzaView: View {
+struct BurgerView: View {
     var body: some View {
-        Model3D(named: "Pizza") { model in
+        Model3D(named: "Burger") { model in
             model
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width:500, height:300)
+                .frame(width:1000, height:500)
         } placeholder: {
             ProgressView()
         }
@@ -16,5 +16,5 @@ struct PizzaView: View {
 }
 
 #Preview {
-    PizzaView()
+    BurgerView()
 }
