@@ -23,9 +23,18 @@ struct StarterView: View {
                             .font(.title)
                             .tag(restaurant)
                             .padding(.vertical, 10)
+                            .onAppear {
+                                Task {
+                                    do {
+                                        let status = try await viewModel.fetchOpenCloseStatus(restaurantId: restaurant.id)
+                                        viewModel.isOpenDict[restaurant.id] = status
+                                    } catch {
+                                        print("Error fetching open/close status: \(error)")
+                                    }
+                                }
+                            }
                     }
                     .navigationTitle("Restaurants")
-                    
                 } detail: {
                     if let selected = selectedItem {
             
@@ -71,7 +80,6 @@ struct StarterView: View {
                                     viewModel.toggleFastDelivery()
                                 }
                             }
-                            .padding(8)
                         })
                     }
                 }

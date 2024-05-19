@@ -5,6 +5,7 @@ import RealityKitContent
 
 struct RestaurantView: View {
     let restaurant: Restaurant
+    @EnvironmentObject var viewModel: RestaurantsViewModel
     let genericRestaurantCopyText : String = "is looking forward to serving you today, from our range of tasty dishes!"
     
     @State private var showImmersiveSpace = false
@@ -54,6 +55,16 @@ struct RestaurantView: View {
                     Spacer()
                     HStack{
                         HStack{
+                            Image(systemName: viewModel.isOpenDict[restaurant.id, default: false] ? "door.right.hand.open" : "door.right.hand.closed")
+                                .foregroundStyle(viewModel.isOpenDict[restaurant.id, default: false] ? .white : .secondary)
+                            
+                            Text("\(viewModel.isOpenDict[restaurant.id, default: false] ? "Open" : "Closed")")
+                                .foregroundStyle(viewModel.isOpenDict[restaurant.id, default: false] ? .white : .secondary)
+                        }
+                        .font(.system(size: 18))
+                        .padding(.trailing, 24)
+                        
+                        HStack{
                             Image(systemName: "stopwatch")
                                 
                             Text("\(restaurant.deliveryTime) mins")
@@ -61,7 +72,7 @@ struct RestaurantView: View {
                         }
                         .foregroundStyle(.secondary)
                         .font(.system(size: 18))
-                        .padding(.trailing, 28)
+                        .padding(.trailing, 24)
                         
                         HStack{
                             Image(systemName: "star.fill")

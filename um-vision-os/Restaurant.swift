@@ -70,13 +70,13 @@ struct RestaurantOpenCloseStatus: Codable, Identifiable {
     let id: String
     let isOpen: Bool
     
-    enum CodingKeys2: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case id = "restaurant_id"
         case isOpen = "is_currently_open"
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys2.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         isOpen = try container.decode(Bool.self, forKey: .isOpen)
     }
